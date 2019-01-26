@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
 import validator from "validator";
 import InlineError from "../messages/InlineError";
 
@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
     const errors = this.validate(this.state.data);
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
-      this.props.submit(this.state.data);
+      this.props.submit(this.state.data).catch(error => this.setState({errors: {global: error.message}}));
     }
   };
 
@@ -39,6 +39,12 @@ class LoginForm extends React.Component {
     const { data, errors } = this.state;
     return (
       <Form onSubmit={this.onSubmit}>
+        {errors.global && (
+            <Message negative>
+              <Message.Header>Something went wrong</Message.Header>
+              <p>{errors.global}</p>
+            </Message>
+        )}
         <Form.Field error={!!errors.email}>
           <label htmlFor="email">Email:</label>
           <input
@@ -54,7 +60,7 @@ class LoginForm extends React.Component {
         <Form.Field error={!!errors.password}>
           <label htmlFor="password">Password:</label>
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="add password"
