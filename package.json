@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "firebase": "^5.8.1",
+    "gravatar-url": "^2.0.0",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -14,7 +16,9 @@
     "react-scripts": "2.1.3",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
     "validator": "^10.11.0"
@@ -44,5 +48,6 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.1"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
